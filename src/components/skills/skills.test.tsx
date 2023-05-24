@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { logRoles, render, screen } from '@testing-library/react';
 import { Skills } from './skills';
 
 describe('Skills', () => {
@@ -37,7 +37,11 @@ describe('Skills', () => {
 
   // query: findBy
   test('Start learning button is eventually displayed', async () => {
-    render(<Skills skills={skills} />);
+    const view = render(<Skills skills={skills} />);
+
+    logRoles(view.container); // to print out list of all the implicit role
+
+    screen.debug(); // to visualize formatted state of the DOM tree
 
     const startLearningButton = await screen.findByRole(
       'button',
@@ -48,6 +52,9 @@ describe('Skills', () => {
         timeout: 2000,
       }
     );
+
+    screen.debug();
+
     expect(startLearningButton).toBeInTheDocument();
   });
 });
