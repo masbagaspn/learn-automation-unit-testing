@@ -5,6 +5,20 @@ describe('Application', () => {
   test('render correctly', () => {
     render(<Application />);
 
+    /* 
+        Learning RTL Queries
+
+        Pririoty Order:
+        1. getByRole
+        2. getByLabelText 
+        3. getByPlaceholderText
+        4. getByText
+        5. getByDisplayValue
+        6. getByAltText
+        7. getByTitle
+        8. getByTestId
+    */
+
     // queries: getByRole, option: level
     const pageHeading = screen.getByRole('heading', { level: 1 });
     expect(pageHeading).toBeInTheDocument();
