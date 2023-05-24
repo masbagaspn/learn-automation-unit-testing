@@ -30,6 +30,10 @@ describe('Application', () => {
     const thirdNameElement = screen.getByPlaceholderText('Full Name');
     expect(thirdNameElement).toBeInTheDocument();
 
+    // queries: getByDisplayValue
+    const forthNameElement = screen.getByDisplayValue('Sagab');
+    expect(forthNameElement).toBeInTheDocument();
+
     // queries: getByRole, options: name
     const bioElement = screen.getByRole('textbox', { name: 'Bio' });
     expect(bioElement).toBeInTheDocument();
@@ -38,14 +42,17 @@ describe('Application', () => {
     const jobLocationElement = screen.getByRole('combobox');
     expect(jobLocationElement).toBeInTheDocument();
 
+    // queries: getByRole, options: default
     const termsElement = screen.getByRole('checkbox');
     expect(termsElement).toBeInTheDocument();
 
+    // queries: getByLabelText
     const secondTermsElement = screen.getByLabelText(
       'I agree to terms and conditions'
     );
     expect(secondTermsElement).toBeInTheDocument();
 
+    // queries: getByRole, options: default
     const submitButtonElement = screen.getByRole('button');
     expect(submitButtonElement).toBeInTheDocument();
   });
