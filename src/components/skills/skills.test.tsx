@@ -25,13 +25,29 @@ describe('Skills', () => {
     expect(loginButton).toBeInTheDocument();
   });
 
+  // query: queryByRole
   test('start learning is not rendered', () => {
     render(<Skills skills={skills} />);
 
-    // query: queryByRole
     const startLearningButton = screen.queryByRole('button', {
-      name: 'Start learning',
+      name: 'Start Learning',
     });
     expect(startLearningButton).not.toBeInTheDocument();
+  });
+
+  // query: findBy
+  test('Start learning button is eventually displayed', async () => {
+    render(<Skills skills={skills} />);
+
+    const startLearningButton = await screen.findByRole(
+      'button',
+      {
+        name: 'Start Learning',
+      },
+      {
+        timeout: 2000,
+      }
+    );
+    expect(startLearningButton).toBeInTheDocument();
   });
 });
