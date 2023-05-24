@@ -12,6 +12,10 @@ describe('Application', () => {
     const sectionHeading = screen.getByRole('heading', { level: 2 });
     expect(sectionHeading).toBeInTheDocument();
 
+    // queries: getByText
+    const paragraphElement = screen.getByText('All fields are mandatory');
+    expect(paragraphElement).toBeInTheDocument();
+
     // queries: getByRole, options: name
     const nameElement = screen.getByRole('textbox', { name: 'Name' });
     expect(nameElement).toBeInTheDocument();
@@ -26,6 +30,7 @@ describe('Application', () => {
     const thirdNameElement = screen.getByPlaceholderText('Full Name');
     expect(thirdNameElement).toBeInTheDocument();
 
+    // queries: getByRole, options: name
     const bioElement = screen.getByRole('textbox', { name: 'Bio' });
     expect(bioElement).toBeInTheDocument();
 
