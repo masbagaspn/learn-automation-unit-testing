@@ -30,6 +30,22 @@ describe('Application', () => {
     const paragraphElement = screen.getByText('All fields are mandatory');
     expect(paragraphElement).toBeInTheDocument();
 
+    // queries: getByText, option: textMatch -> string
+    const secondParagraphElement = screen.getByText('All fields', {
+      exact: false,
+    });
+    expect(secondParagraphElement).toBeInTheDocument();
+
+    // queries: getByText, option: textMatch -> regEx
+    const thirdParagraphElement = screen.getByText(/mandatory/);
+    expect(thirdParagraphElement).toBeInTheDocument();
+
+    // queries: getByText, option: textMatch -> function
+    const forthParagraphElement = screen.getByText((content) =>
+      content.startsWith('All')
+    );
+    expect(forthParagraphElement).toBeInTheDocument();
+
     // queries: getByTitle
     const closeElement = screen.getByTitle('close');
     expect(closeElement).toBeInTheDocument();
